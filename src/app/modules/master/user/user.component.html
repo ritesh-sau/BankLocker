@@ -1,0 +1,36 @@
+<div class="search-container">
+    <h2>Search for your branch</h2>
+  
+    <form [formGroup]="branchForm">
+      <mat-form-field appearance="outline">
+        <mat-label>Select your State</mat-label>
+        <mat-select formControlName="state" (selectionChange)="onStateChange()">
+          <mat-option *ngFor="let state of states" [value]="state">{{ state }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+  
+      <mat-form-field appearance="outline" *ngIf="cities.length > 0">
+        <mat-label>Select your City</mat-label>
+        <mat-select formControlName="city" (selectionChange)="onCityChange()">
+          <mat-option *ngFor="let city of cities" [value]="city">{{ city }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+  
+      <mat-form-field appearance="outline" *ngIf="branches.length > 0">
+        <mat-label>Select Branch</mat-label>
+        <mat-select formControlName="branch" (selectionChange)="onBranchSelect()">
+          <mat-option *ngFor="let branch of branches" [value]="branch.name">{{ branch.name }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </form>
+  
+    <div *ngIf="selectedBranch" class="branch-details">
+      <h3>Branch Details</h3>
+      <p><strong>Name:</strong> {{ selectedBranch.name }}</p>
+      <p><strong>Address:</strong> {{ selectedBranch.address }}</p>
+      <p><strong>City:</strong> {{ selectedBranch.city }}</p>
+      <p><strong>Pincode:</strong> {{ selectedBranch.pincode }}</p>
+      <p><strong>State:</strong> {{ selectedBranch.state }}</p>
+    </div>
+  </div>
+  

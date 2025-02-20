@@ -1,0 +1,66 @@
+.login-card {
+    max-width: 400px;
+    margin: auto;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.19);
+    background: #ffffff;
+    transform: rotateX(0deg) rotateY(0deg);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+button {
+    margin-top: 20px;
+}
+
+login-background {
+    display: block;
+    height: 85vh;
+    width: 100vw;
+    overflow: hidden;
+}
+
+hr {
+    width: 8rem;
+    height: 0.2rem;
+    margin: 0.4rem auto 1rem auto;
+    background: linear-gradient(to right, #f44336, #9c27b0);
+}
+
+.login-background {
+    margin-top: 100px; // Adjust the value as needed
+}
+
+body {
+    padding-top: 100px; // Adjust the value as needed
+}
+
+.header-spacer {
+    flex: 1 1 auto;
+}
+
+//For 3D effect
+
+.login-card:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3), 0 20px 40px rgba(0, 0, 0, 0.2);
+    transform: translateY(-10px) rotateX(5deg) rotateY(5deg);
+}
+
+mat-card-header {
+    text-align: center;
+}
+
+
+mat-card-subtitle {
+    font-size: 14px;
+    color: #666;
+}
+
+mat-card-actions {
+    display: flex;
+    justify-content: space-between;
+}

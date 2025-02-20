@@ -1,0 +1,60 @@
+<mat-nav-list>
+    <!-- For parent items -->
+    @for (item of menuItems(); track item.name) {
+    <a mat-list-item [routerLink]="item.route" (click)="toggleNested(item)" routerLinkActive #rla="routerLinkActive"
+        [activated]="rla.isActive">
+        <mat-icon matListItemIcon>{{ item.icon }}</mat-icon>
+        <span matListItemTitle>{{ item.name }}</span>
+
+        @if (item.children) {
+        <span matListItemMeta>
+            @if (isItemOpen(item)) {
+            <mat-icon>expand_less</mat-icon>
+            } @else {
+            <mat-icon>expand_more</mat-icon>
+            }
+        </span>
+        }
+    </a>
+
+    <!-- For child items -->
+    @if (item.children && isItemOpen(item)) {
+    <div class="indented">
+        @for (subItem of item.children; track subItem.name) {
+        <a mat-list-item class="indented" (click)="toggleNested(subItem)"
+            [routerLink]="item.route + '/' + subItem.route" routerLinkActive #rla="routerLinkActive"
+            [activated]="rla.isActive">
+
+            <mat-icon matListItemIcon>{{ subItem.icon }}</mat-icon>
+            <span matListItemTitle>{{ subItem.name }}</span>
+
+            @if (subItem.children) {
+            <span matListItemMeta>
+                @if (isItemOpen(subItem)) {
+                <mat-icon>expand_less</mat-icon>
+                } @else {
+                <mat-icon>expand_more</mat-icon>
+                }
+            </span>
+            }
+        </a>
+
+        <!-- For sub-child items -->
+        @if (subItem.children && isItemOpen(subItem)) {
+        <div class="indented-more">
+            @for (subSubItem of subItem.children; track subSubItem.name) {
+            <a mat-list-item class="indented-more"
+                [routerLink]="item.route + '/' + subItem.route + '/' + subSubItem.route" routerLinkActive
+                #rla="routerLinkActive" [activated]="rla.isActive">
+                <mat-icon matListItemIcon>{{ subSubItem.icon }}</mat-icon>
+                <span matListItemTitle>{{ subSubItem.name }}</span>
+            </a>
+            }
+        </div>
+        }
+        
+        }
+    </div>
+    }
+    }
+</mat-nav-list>
