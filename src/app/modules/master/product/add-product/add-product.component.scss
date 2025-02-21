@@ -1,4 +1,4 @@
-.card {
+.row .card {
     border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     padding: 20px;
@@ -31,11 +31,6 @@
     color: white;
 }
 
-.chart-row {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 30px;
-}
 
 .chart-container {
     text-align: center;
@@ -46,6 +41,10 @@
     font-weight: bold;
     margin-top: 10px;
 }
-.row {
-    padding: 15px 0; /* Adds spacing between rows */
+
+
+@media (min-width: 1200px) {
+    .container, .container-lg, .container-md, .container-sm, .container-xl {
+        max-width: 1115px !important;
+    }
 }
