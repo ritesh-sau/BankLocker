@@ -6,7 +6,7 @@ import { Component, computed, signal } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'CSASA';
+  title = 'Bank Locker';
 
   isLoggedIn = signal(false);
 
