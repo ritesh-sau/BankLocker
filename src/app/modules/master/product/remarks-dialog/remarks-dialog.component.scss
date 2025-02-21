@@ -1,0 +1,72 @@
+mat-dialog-actions {
+    display: flex;
+    justify-content: center;  /* Center buttons horizontally */
+    align-items: center;  /* Center buttons vertically */
+    gap: 20px;  /* Space between buttons */
+    width: 100%;
+    height: 100px;  /* Adjust height to center within dialog */
+}
+
+/* Common Button Styles */
+.cancel-btn, .submit-btn {
+    width: 150px;  /* Uniform width */
+    padding: 10px 20px;
+    font-weight: bold;
+    border-radius: 5px;
+    text-align: center;
+    transition: 0.3s;
+}
+
+/* Cancel Button */
+.cancel-btn {
+    background-color: #f8d7da;
+    color: #d32f2f;
+    border: 1px solid #d32f2f;
+}
+
+.cancel-btn:hover {
+    background-color: #d32f2f;
+    color: white;
+}
+
+/* Submit Button */
+.submit-btn {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+}
+
+.submit-btn:hover {
+    background-color: #388e3c;
+}
+
+.full-width {
+    width: 100%;
+}
+
+/* Improved Textarea */
+.custom-textarea {
+    background-color: #f9f9f9; /* Light background */
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 1rem;
+    transition: 0.3s;
+    width: 100%;
+    resize: none; /* Prevents resizing */
+}
+
+/* Focus Effect */
+.custom-textarea:focus {
+    outline: none;
+    border-color: #4caf50; /* Green highlight on focus */
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+}
+
+/* Dialog Actions (Centering Buttons) */
+.dialog-actions {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+

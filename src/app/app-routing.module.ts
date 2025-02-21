@@ -4,6 +4,7 @@ import { BlankPageComponent } from "./modules/blank-page/blank-page.component";
 import { NgModule } from "@angular/core";
 import { ProductModule } from "./modules/master/product/product.module";
 import { UserComponent } from "./modules/master/user/user.component";
+import { BranchBookedComponent } from "./modules/master/product/branch-booked/branch-booked.component";
 
 
 const routes: Routes = [
@@ -21,6 +22,10 @@ const routes: Routes = [
     {
         path: 'login',
         component: AuthComponent,
+    },
+    {
+        path: 'booked',
+        component: BranchBookedComponent,
     },
     {
         path: 'dashboard',

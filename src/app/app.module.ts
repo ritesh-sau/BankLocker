@@ -28,6 +28,9 @@ import { MatRippleModule } from '@angular/material/core';
 import { CommonModule } from '@angular/common';
 import { MatSelectModule } from '@angular/material/select';
 import { UserComponent } from './modules/master/user/user.component';
+import { BranchBookedComponent } from './modules/master/product/branch-booked/branch-booked.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { RemarksDialogComponent } from './modules/master/product/remarks-dialog/remarks-dialog.component';
 
 
 
@@ -39,7 +42,7 @@ import { UserComponent } from './modules/master/user/user.component';
     HeaderComponent,
     SideBarComponent,
     FooterComponent,
-    UserComponent
+    UserComponent,
   ],
   imports: [
     CommonModule,
@@ -62,8 +65,10 @@ import { UserComponent } from './modules/master/user/user.component';
     MatRippleModule,
     ReactiveFormsModule,
     MatFormFieldModule,
-    MatSelectModule
-    
+    MatSelectModule,
+    BranchBookedComponent,
+    MatDialogModule
+        
 
   ],
   providers: [MenuItemService, provideHttpClient()],
