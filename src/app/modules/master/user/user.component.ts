@@ -1,5 +1,4 @@
-import { Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-user',
@@ -8,50 +7,85 @@ import { FormControl, FormGroup } from '@angular/forms';
   styleUrl: './user.component.scss'
 })
 export class UserComponent {
+  searchQuery: string = '';
+  selectedState: string = '';
+  selectedCity: string = '';
+  selectedLocality: string = '';
+  selectedBranch: string = '';
 
-  states = ['Bihar', 'Maharashtra', 'Karnataka'];
-  citiesMap: { [key: string]: string[] } = {
-    Bihar: ['Arrah', 'Patna'],
-    Maharashtra: ['Mumbai', 'Pune'],
-    Karnataka: ['Bangalore', 'Mysore']
-  };
-  branchesMap: { [key: string]: any[] } = {
-    Arrah: [{ name: 'Arrah', address: 'ICICI Bank Ltd., Apporva Tower, Opposite Sadar Hospital, Arrah, Bhojpur Dist., Bihar', city: 'Arrah', pincode: '802301', state: 'Bihar' }],
-    Patna: [{ name: 'Patna Main', address: 'ICICI Bank Ltd., Main Road, Patna, Bihar', city: 'Patna', pincode: '800001', state: 'Bihar' }],
-    Mumbai: [{ name: 'Mumbai Main', address: 'ICICI Bank Ltd., Nariman Point, Mumbai, Maharashtra', city: 'Mumbai', pincode: '400021', state: 'Maharashtra' }],
-    Pune: [{ name: 'Pune Camp', address: 'ICICI Bank Ltd., MG Road, Pune, Maharashtra', city: 'Pune', pincode: '411001', state: 'Maharashtra' }],
-    Bangalore: [{ name: 'Bangalore Main', address: 'ICICI Bank Ltd., MG Road, Bangalore, Karnataka', city: 'Bangalore', pincode: '560001', state: 'Karnataka' }],
-    Mysore: [{ name: 'Mysore Branch', address: 'ICICI Bank Ltd., Mysore, Karnataka', city: 'Mysore', pincode: '570001', state: 'Karnataka' }]
-  };
-
-  branchForm = new FormGroup({
-    state: new FormControl(''),
-    city: new FormControl(''),
-    branch: new FormControl('')
-  });
-
+  states: string[] = ['Maharashtra', 'Karnataka', 'Tamil Nadu'];
   cities: string[] = [];
-  branches: any[] = [];
-  selectedBranch: any = null;
+  localities: string[] = [];
+  branches: string[] = [];
 
-  onStateChange() {
-    const selectedState = this.branchForm.value.state as string; // Ensure it's treated as a string
-    this.cities = this.citiesMap[selectedState] || []; // Use optional chaining
-    this.branchForm.controls.city.setValue('');
+  lockerData: any[] = [];
+  allLockerData: any[] = [
+    { lockerId: 'L001', size: 'Small', branchName: 'Andheri East', locality: 'Andheri', city: 'Mumbai', state: 'Maharashtra' },
+    { lockerId: 'L002', size: 'Medium', branchName: 'Andheri West', locality: 'Andheri', city: 'Mumbai', state: 'Maharashtra' },
+    { lockerId: 'L003', size: 'Large', branchName: 'Bandra East', locality: 'Bandra', city: 'Mumbai', state: 'Maharashtra' },
+    { lockerId: 'L004', size: 'Small', branchName: 'Bandra West', locality: 'Bandra', city: 'Mumbai', state: 'Maharashtra' },
+    { lockerId: 'L005', size: 'Medium', branchName: 'Kothrud Center', locality: 'Kothrud', city: 'Pune', state: 'Maharashtra' },
+    { lockerId: 'L006', size: 'Large', branchName: 'SN Main', locality: 'Shivaji Nagar', city: 'Pune', state: 'Maharashtra' }
+  ];
+
+  onStateChange(): void {
+    const stateCities: { [key: string]: string[] } = {
+      'Maharashtra': ['Mumbai', 'Pune'],
+      'Karnataka': ['Bangalore'],
+      'Tamil Nadu': ['Chennai']
+    };
+
+    this.cities = stateCities[this.selectedState] || [];
+    this.selectedCity = '';
+    this.localities = [];
     this.branches = [];
-    this.selectedBranch = null;
-  }
-  
-  onCityChange() {
-    const selectedCity = this.branchForm.value.city as string; // Ensure it's treated as a string
-    this.branches = this.branchesMap[selectedCity] || []; // Use optional chaining
-    this.branchForm.controls.branch.setValue('');
-    this.selectedBranch = null;
-  }
-  
-
-  onBranchSelect() {
-    this.selectedBranch = this.branches.find(branch => branch.name === this.branchForm.value.branch) || null;
+    this.updateLockerData();
   }
 
+  onCityChange(): void {
+    const cityLocalities: { [key: string]: string[] } = {
+      'Mumbai': ['Andheri', 'Bandra'],
+      'Pune': ['Kothrud', 'Shivaji Nagar'],
+      'Bangalore': ['Indiranagar', 'Jayanagar'],
+      'Chennai': ['T Nagar', 'Anna Nagar']
+    };
+
+    this.localities = cityLocalities[this.selectedCity] || [];
+    this.selectedLocality = '';
+    this.branches = [];
+    this.updateLockerData();
+  }
+
+  onLocalityChange(): void {
+    const localityBranches: { [key: string]: string[] } = {
+      'Andheri': ['Andheri East', 'Andheri West'],
+      'Bandra': ['Bandra East', 'Bandra West'],
+      'Kothrud': ['Kothrud Center'],
+      'Shivaji Nagar': ['SN Main']
+    };
+
+    this.branches = localityBranches[this.selectedLocality] || [];
+    this.selectedBranch = '';
+    this.updateLockerData();
+  }
+
+  updateLockerData(): void {
+    this.lockerData = this.allLockerData.filter(locker =>
+      (this.selectedState ? locker.state === this.selectedState : true) &&
+      (this.selectedCity ? locker.city === this.selectedCity : true) &&
+      (this.selectedLocality ? locker.locality === this.selectedLocality : true) &&
+      (this.selectedBranch ? locker.branchName === this.selectedBranch : true)
+    );
+  }
+
+  searchBranch(): void {
+    if (!this.searchQuery.trim()) {
+      this.updateLockerData();
+      return;
+    }
+
+    this.lockerData = this.allLockerData.filter(locker =>
+      locker.branchName.toLowerCase().includes(this.searchQuery.toLowerCase())
+    );
+  }
 }

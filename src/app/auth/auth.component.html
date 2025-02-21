@@ -1,58 +1,29 @@
+<!-- Import Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
-
-<!-- <mat-toolbar [style.color]="'white'" [style.background]="'#004c8f'"> -->
-    <!-- <span><img src="assets/images/ritesh.svg" routerLink="/dashboard" class="img-fluid w-50 m-3" alt="HDFC Bank Logo"></span> -->
-    <!-- <span class="header-spacer"></span> -->
-    <!-- <span>Centralized System</span> -->
-<!-- 
-</mat-toolbar> -->
-
-
-
-<div class="d-viewer">
-    <div class="d-container">
-    <div class="login-background container row d-flex flex-column justify-content-center m-0 p-4">
-        <div class="col-12 text-center">
-            <mat-card class="login-card">
-                <!-- <mat-card class="mx-auto text-center col-x1-4 m-6 mat-elevation-z7"> -->
-                <mat-card-header class="justify-content-center">
-                    <mat-card-title>
-                        <h1 class="mat-headline">
-                            Login
-                            <hr />
-                        </h1>
-                    </mat-card-title>
-                    <mat-card-subtitle>Welcome back!</mat-card-subtitle>
-                </mat-card-header>
-                <mat-card-content class="justify-content-center">
-                    <form  (ngSubmit)="submitForm()" [formGroup]="loginForm" class="p-2">
-                        <mat-card-content class="justify-content-center">
-                            <mat-form-field class="col-8 row" appearance="outline">
-                                <mat-label>Username</mat-label>
-                                <input matInput formControlName="username" placeholder="Enter your username" required />
-                                <mat-error *ngIf="loginForm.get('username')?.hasError('required')">
-                                    Username is required
-                                </mat-error>
-                            </mat-form-field>
-
-                            <mat-form-field class="col-8 row" appearance="outline">
-                                <mat-label>Password</mat-label>
-                                <input matInput type="password" formControlName="password"
-                                    placeholder="Enter your password" required />
-                                <mat-error *ngIf="loginForm.get('password')?.hasError('required')">
-                                    Password is required
-                                </mat-error>
-                            </mat-form-field>
-                        </mat-card-content>
-                        <mat-card-actions>
-                            <button mat-raised-button color="primary" type="submit">Login</button>
-                            <button mat-raised-button color="primary" type="reset">Reset</button>
-                        </mat-card-actions>
-
-                    </form>
-                </mat-card-content>
-            </mat-card>
-        </div>
+<div class="login-container mt-2">
+  <div class="login-glass">
+    <div class="brand-header">
+      <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Bank Locker Icon" class="brand-logo">
+      <h2 class="brand-title">Secure Vault Login</h2>
+      <p class="brand-subtitle">Access your locker safely</p>
     </div>
-</div>
+
+    <form (ngSubmit)="submitForm()" [formGroup]="loginForm">
+      <mat-form-field class="input-field" appearance="outline">
+        <mat-label>Username</mat-label>
+        <input matInput formControlName="username" placeholder="Enter username" required />
+        <mat-error *ngIf="loginForm.get('username')?.hasError('required')">Required</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="input-field" appearance="outline">
+        <mat-label>Password</mat-label>
+        <input matInput type="password" formControlName="password" placeholder="Enter password" required />
+        <mat-error *ngIf="loginForm.get('password')?.hasError('required')">Required</mat-error>
+      </mat-form-field>
+
+      <button mat-raised-button class="login-btn" type="submit">Login</button>
+      <p class="forgot-password">Forgot password? <a href="#">Reset here</a></p>
+    </form>
+  </div>
 </div>

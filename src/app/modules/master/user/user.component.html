@@ -1,36 +1,75 @@
-<div class="search-container">
-    <h2>Search for your branch</h2>
-  
-    <form [formGroup]="branchForm">
-      <mat-form-field appearance="outline">
-        <mat-label>Select your State</mat-label>
-        <mat-select formControlName="state" (selectionChange)="onStateChange()">
-          <mat-option *ngFor="let state of states" [value]="state">{{ state }}</mat-option>
-        </mat-select>
-      </mat-form-field>
-  
-      <mat-form-field appearance="outline" *ngIf="cities.length > 0">
-        <mat-label>Select your City</mat-label>
-        <mat-select formControlName="city" (selectionChange)="onCityChange()">
-          <mat-option *ngFor="let city of cities" [value]="city">{{ city }}</mat-option>
-        </mat-select>
-      </mat-form-field>
-  
-      <mat-form-field appearance="outline" *ngIf="branches.length > 0">
-        <mat-label>Select Branch</mat-label>
-        <mat-select formControlName="branch" (selectionChange)="onBranchSelect()">
-          <mat-option *ngFor="let branch of branches" [value]="branch.name">{{ branch.name }}</mat-option>
-        </mat-select>
-      </mat-form-field>
-    </form>
-  
-    <div *ngIf="selectedBranch" class="branch-details">
-      <h3>Branch Details</h3>
-      <p><strong>Name:</strong> {{ selectedBranch.name }}</p>
-      <p><strong>Address:</strong> {{ selectedBranch.address }}</p>
-      <p><strong>City:</strong> {{ selectedBranch.city }}</p>
-      <p><strong>Pincode:</strong> {{ selectedBranch.pincode }}</p>
-      <p><strong>State:</strong> {{ selectedBranch.state }}</p>
+<div class="container-fluid mt-5 shadow-lg p-4 bg-white rounded">
+  <h3 class="fw-bold text-primary">Find Your Nearest Bank Locker</h3>
+  <p class="text-muted">Search by branch name or select a state, city, locality, and branch to find a locker.</p>
+
+  <!-- Search Bar -->
+  <div class="d-flex align-items-center mt-4">
+    <div class="search-bar w-100 me-2 d-flex border border-primary rounded-pill p-1 bg-light">
+      <input type="text" [(ngModel)]="searchQuery" class="form-control border-0 bg-light" placeholder="Enter branch name">
+      <button class="btn text-primary" (click)="searchBranch()"><i class="fas fa-search"></i></button>
+    </div>
+    <button class="btn btn-primary px-4" (click)="searchBranch()">Search</button>
+  </div>
+
+  <!-- OR Divider -->
+  <div class="divider">OR</div>
+
+  <!-- State, City, Locality, Branch Selection -->
+  <h5 class="fw-bold text-primary">Select Your Location</h5>
+  <div class="row mt-3">
+    <div class="col-md-3">
+      <label class="fw-bold">State</label>
+      <select class="form-select border-primary" [(ngModel)]="selectedState" (change)="onStateChange()">
+        <option value="">- Select State -</option>
+        <option *ngFor="let state of states" [value]="state">{{ state }}</option>
+      </select>
+    </div>
+    <div class="col-md-3">
+      <label class="fw-bold">City</label>
+      <select class="form-select border-primary" [(ngModel)]="selectedCity" (change)="onCityChange()">
+        <option value="">- Select City -</option>
+        <option *ngFor="let city of cities" [value]="city">{{ city }}</option>
+      </select>
+    </div>
+    <div class="col-md-3">
+      <label class="fw-bold">Locality</label>
+      <select class="form-select border-primary" [(ngModel)]="selectedLocality" (change)="onLocalityChange()">
+        <option value="">- Select Locality -</option>
+        <option *ngFor="let locality of localities" [value]="locality">{{ locality }}</option>
+      </select>
+    </div>
+    <div class="col-md-3">
+      <label class="fw-bold">Branch</label>
+      <select class="form-select border-primary" [(ngModel)]="selectedBranch">
+        <option value="">- Select Branch -</option>
+        <option *ngFor="let branch of branches" [value]="branch">{{ branch }}</option>
+      </select>
     </div>
   </div>
-  
+
+  <!-- Locker Details Table -->
+  <h5 class="fw-bold mt-4 text-primary">Locker Availability</h5>
+  <table class="table table-bordered mt-2 shadow-sm">
+    <thead class="bg-primary text-white">
+      <tr>
+        <th>Locker ID</th>
+        <th>Size</th>
+        <th>Branch Name</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let locker of lockerData">
+        <td>{{ locker.lockerId }}</td>
+        <td>{{ locker.size }}</td>
+        <td>{{ locker.branchName }}</td>
+        <td>
+          <button class="btn btn-success btn-sm">Book Now</button>
+        </td>
+      </tr>
+      <tr *ngIf="lockerData.length === 0">
+        <td colspan="4" class="text-center text-muted">No lockers available</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
