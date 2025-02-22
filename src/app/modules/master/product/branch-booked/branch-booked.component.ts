@@ -4,6 +4,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDialog } from '@angular/material/dialog';
 import { RemarksDialogComponent } from '../remarks-dialog/remarks-dialog.component';
+import { Router } from '@angular/router';
 
 export interface LockerElement {
   position: number;
@@ -25,8 +26,6 @@ const LOCKER_DATA: LockerElement[] = [
   { position: 6, lockerNo: 'L006', custId: 'C128', custName: 'Emily Davis', assignmentDate: '2024-01-25', lastVisit: '2024-02-12', totalVisit: 8, action: 'View' },
   { position: 7, lockerNo: 'L007', custId: 'C129', custName: 'Michael Scott', assignmentDate: '2024-01-20', lastVisit: '2024-02-10', totalVisit: 10, action: 'View' },
   { position: 8, lockerNo: 'L008', custId: 'C130', custName: 'Sarah Lee', assignmentDate: '2024-01-15', lastVisit: '2024-02-08', totalVisit: 9, action: 'View' },
-  { position: 9, lockerNo: 'L009', custId: 'C131', custName: 'David Johnson', assignmentDate: '2024-01-10', lastVisit: '2024-02-06', totalVisit: 6, action: 'View' },
-  { position: 10, lockerNo: 'L010', custId: 'C132', custName: 'Olivia Martinez', assignmentDate: '2024-01-05', lastVisit: '2024-02-04', totalVisit: 7, action: 'View' }
 ];
 
 @Component({
@@ -38,7 +37,7 @@ const LOCKER_DATA: LockerElement[] = [
 })
 export class BranchBookedComponent {
 
-  constructor(private dialog: MatDialog) {}
+  constructor(private dialog: MatDialog, private router: Router) {}
 
   displayedColumns: string[] = ['position', 'lockerNo', 'custId', 'custName', 'assignmentDate', 'lastVisit', 'totalVisit', 'action'];
   dataSource = new MatTableDataSource(LOCKER_DATA);
@@ -63,5 +62,10 @@ export class BranchBookedComponent {
 
   removeLocker(element: LockerElement) {
     this.dataSource.data = this.dataSource.data.filter(item => item.lockerNo !== element.lockerNo);
+  }
+
+  
+  goBack() {
+    this.router.navigate(['/master/product/addProduct']);
   }
 }

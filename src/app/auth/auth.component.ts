@@ -85,4 +85,8 @@ export class AuthComponent implements OnInit {
 
   }
 
+  goBack() {
+    this.router.navigate(['/dashboard']);
+  }
+
 }

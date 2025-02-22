@@ -1,0 +1,59 @@
+/* Structure */
+table {
+    width: 100%;
+  }
+  
+  .mat-mdc-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+
+  .book-btn {
+    background-color: #1976d2; /* Primary Blue */
+    color: white;
+    font-weight: bold;
+    padding: 8px 16px;
+    border-radius: 8px;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.book-btn:hover {
+    background-color: #1565c0; /* Darker blue on hover */
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.3);
+}
+
+.book-btn:disabled {
+    background-color: #b0bec5; /* Light gray for disabled */
+    color: #ffffff;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+.valid-user {
+  color: green;
+  font-weight: bold;
+  margin-left: 10px;
+}
+
+.invalid-user {
+  color: red;
+  font-weight: bold;
+  margin-left: 10px;
+}
+
+/* Default state */
+mat-form-field {
+  width: 150px;
+  transition: width 0.3s ease-in-out; /* Smooth transition */
+}
+
+/* Expand input field when user starts typing */
+mat-form-field:has(input:focus),
+mat-form-field:has(input:not(:placeholder-shown)) {
+  width: 250px; /* Expand width */
+}
+
+
+
+  

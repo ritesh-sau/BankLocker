@@ -31,6 +31,7 @@ import { UserComponent } from './modules/master/user/user.component';
 import { BranchBookedComponent } from './modules/master/product/branch-booked/branch-booked.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { RemarksDialogComponent } from './modules/master/product/remarks-dialog/remarks-dialog.component';
+import { AvailableBranchComponent } from './modules/master/product/available-branch/available-branch.component';
 
 
 
@@ -67,6 +68,7 @@ import { RemarksDialogComponent } from './modules/master/product/remarks-dialog/
     MatFormFieldModule,
     MatSelectModule,
     BranchBookedComponent,
+    AvailableBranchComponent,
     MatDialogModule
         
 

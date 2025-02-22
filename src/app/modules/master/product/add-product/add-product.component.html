@@ -1,103 +1,75 @@
 <div class="container mb-5">
     <div class="card mt-2">
         <div class="card-body">
-            <h3 class="text-center font-weight-bold">Locker Management Dashboard</h3>
-            <p class="text-center text-muted">
-                A real-time overview of locker occupancy and availability. 
-                Monitor capacity, track utilization trends, and make data-driven decisions for efficient space management.
-            </p>
 
-            <!-- Locker Statistics -->
-            <div class="row">
-                <div class="col-lg-4 col-md-6 col-sm-12 mt-1">
-                    <div class="card total-lockers shadow-sm">
-                        <div class="card-body text-center">
-                            <i class="fas fa-box fa-3x text-primary"></i>
-                            <h4 class="mt-2">Total Lockers</h4>
-                            <h2 class="font-weight-bold">500</h2>
-                            <p class="text-muted">Comprehensive storage capacity across all categories.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 col-sm-12 mt-1">
-                    <div class="card booked-lockers shadow-sm">
-                        <div class="card-body text-center">
-                            <i class="fas fa-lock fa-3x text-danger"></i>
-                            <h4 class="mt-2">Booked Lockers</h4>
-                            <h2 class="font-weight-bold">350</h2>
-                            <p class="text-muted">Currently reserved and actively in use.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-12 col-sm-12 mt-1">
-                    <div class="card available-lockers shadow-sm">
-                        <div class="card-body text-center">
-                            <i class="fas fa-unlock fa-3x text-success"></i>
-                            <h4 class="mt-2">Available Lockers</h4>
-                            <h2 class="font-weight-bold">150</h2>
-                            <p class="text-muted">Open for new assignments and bookings.</p>
-                        </div>
-                    </div>
+        
+    <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-12 mt-1">
+            <!-- Total Lockers -->
+            <div class="card total-lockers">
+                <div class="card-body text-center">
+                    <i class="fas fa-box fa-3x"></i>
+                    <h4>Total Lockers</h4>
+                    <h2>100</h2>
                 </div>
             </div>
+        </div>
 
-            <!-- Locker Distribution Charts -->
-            <div class="row mt-4">
-                <div class="col-12">
-                    <h4 class="text-center font-weight-bold">Locker Distribution by Size</h4>
-                    <p class="text-center text-muted">
-                        Gain insights into the allocation of small, medium, and large lockers.
-                        Click on a category to explore further details.
-                    </p>
-                </div>
-
-                <div class="col-lg-4 col-md-6 col-sm-12 d-flex flex-column align-items-center">
-                    <div class="chart-container">
-                        <ngx-charts-pie-chart [view]="view" [results]="single" [scheme]="colorScheme"
-                            [doughnut]="false" [legend]="false" [explodeSlices]="false" (select)="onChartClick($event, 'small')">
-                        </ngx-charts-pie-chart>
-                        <div class="locker-text"><h5 class="mt-2 font-weight-bold">Small Lockers</h5></div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 col-sm-12 d-flex flex-column align-items-center">
-                    <div class="chart-container">
-                        <ngx-charts-pie-chart [view]="view" [results]="medium" [scheme]="colorScheme"
-                            [doughnut]="false" [legend]="false" [explodeSlices]="false" (select)="onChartClick($event, 'medium')">
-                        </ngx-charts-pie-chart>
-                        <div class="locker-text"><h5 class="mt-2 font-weight-bold">Medium Lockers</h5></div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-12 col-sm-12 d-flex flex-column align-items-center">
-                    <div class="chart-container">
-                        <ngx-charts-pie-chart [view]="view" [results]="large" [scheme]="colorScheme"
-                            [doughnut]="false" [legend]="false" [explodeSlices]="false" (select)="onChartClick($event, 'large')">
-                        </ngx-charts-pie-chart>
-                        <div class="locker-text"><h5 class="mt-2 font-weight-bold">Large Lockers</h5></div>
-                    </div>
+        <div class="col-lg-4 col-md-6 col-sm-12 mt-1">
+            <!-- Booked Lockers -->
+            <div class="card booked-lockers">
+                <div class="card-body text-center">
+                    <i class="fas fa-lock fa-3x"></i>
+                    <h4>Booked Lockers</h4>
+                    <h2>60</h2>
                 </div>
             </div>
+        </div>
 
-            <!-- Summary & Insights -->
-            <div class="row mt-4">
-                <div class="col-12">
-                    <div class="card bg-light p-3 shadow-sm text-left">
-                        <h5 class="text-center font-weight-bold">Key Insights</h5>
-                        <ul class="text-muted">
-                            <li><strong>Occupancy Rate:</strong> 70% of total lockers are currently booked.</li>
-                            <li><strong>Availability:</strong> 150 lockers remain open for new users.</li>
-                            <li><strong>Locker Allocation:</strong> Balanced distribution across different sizes to meet diverse storage needs.</li>
-                        </ul>
-                        <p class="text-muted text-center">
-                            Optimize locker assignments and improve utilization efficiency with real-time analytics.
-                        </p>
-                    </div>
+        <div class="col-lg-4 col-md-12 col-sm-12 mt-1">
+            <!-- Available Lockers -->
+            <div class="card available-lockers">
+                <div class="card-body text-center">
+                    <i class="fas fa-unlock fa-3x"></i>
+                    <h4>Available Lockers</h4>
+                    <h2>40</h2>
                 </div>
             </div>
-
         </div>
     </div>
+
+    <!-- Locker Charts -->
+    <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-12 d-flex flex-column align-items-center">
+            <div class="chart-container">
+                <ngx-charts-pie-chart [view]="view" [results]="small" [scheme]="colorScheme"
+                    [doughnut]="false" [legend]="false" [explodeSlices]="false" (select)="onChartClick($event, 'small')">
+                </ngx-charts-pie-chart>
+                <div class="locker-text"><h2>Small Locker</h2></div>
+                <h3 class="locker-count">{{ getLockerCount(small) }}</h3>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 col-sm-12 d-flex flex-column align-items-center">
+            <div class="chart-container">
+                <ngx-charts-pie-chart [view]="view" [results]="medium" [scheme]="colorScheme"
+                    [doughnut]="false" [legend]="false" [explodeSlices]="false" (select)="onChartClick($event, 'medium')">
+                </ngx-charts-pie-chart>
+                <div class="locker-text"><h2>Medium Locker</h2></div>
+                <h3 class="locker-count">{{ getLockerCount(medium) }}</h3>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-12 col-sm-12 d-flex flex-column align-items-center">
+            <div class="chart-container">
+                <ngx-charts-pie-chart [view]="view" [results]="large" [scheme]="colorScheme"
+                    [doughnut]="false" [legend]="false" [explodeSlices]="false" (select)="onChartClick($event, 'large')">
+                </ngx-charts-pie-chart>
+                <div class="locker-text"><h2>Large Locker</h2></div>
+                <h3 class="locker-count">{{ getLockerCount(large) }}</h3>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
 </div>

@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ApprovedProuctComponent } from './approved-prouct.component';
+import { AvailableBranchComponent } from './available-branch.component';
 
-describe('ApprovedProuctComponent', () => {
-  let component: ApprovedProuctComponent;
-  let fixture: ComponentFixture<ApprovedProuctComponent>;
+describe('AvailableBranchComponent', () => {
+  let component: AvailableBranchComponent;
+  let fixture: ComponentFixture<AvailableBranchComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ApprovedProuctComponent ]
+      imports: [AvailableBranchComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ApprovedProuctComponent);
+    fixture = TestBed.createComponent(AvailableBranchComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

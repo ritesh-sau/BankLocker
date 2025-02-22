@@ -5,6 +5,7 @@ import { NgModule } from "@angular/core";
 import { ProductModule } from "./modules/master/product/product.module";
 import { UserComponent } from "./modules/master/user/user.component";
 import { BranchBookedComponent } from "./modules/master/product/branch-booked/branch-booked.component";
+import { AvailableBranchComponent } from "./modules/master/product/available-branch/available-branch.component";
 
 
 const routes: Routes = [
@@ -24,8 +25,12 @@ const routes: Routes = [
         component: AuthComponent,
     },
     {
-        path: 'booked',
+        path: 'branch/booked',
         component: BranchBookedComponent,
+    },
+    {
+        path: 'branch/available',
+        component: AvailableBranchComponent,
     },
     {
         path: 'dashboard',

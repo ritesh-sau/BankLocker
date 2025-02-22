@@ -12,19 +12,19 @@ export class AddProductComponent {
   view: [number, number] = [500, 300]; // Chart size
 
   // Donut chart data
-  single = [
-    { name: 'Booked', value: 40 },
-    { name: 'Available', value: 60 }
+  small = [
+    { name: 'Booked', value: 25 },
+    { name: 'Available', value: 15 }
   ];
   medium = [
-    { name: "Booked", value: 50 },
-    { name: "Available", value: 50 }
+    { name: "Booked", value: 15 },
+    { name: "Available", value: 15 }
   ];
 
   // Example data for Large Locker
   large = [
-    { name: "Booked", value: 70 },
-    { name: "Available", value: 30 }
+    { name: "Booked", value: 20 },
+    { name: "Available", value: 10 }
   ];
 
   // Define color scheme properly
@@ -39,11 +39,16 @@ export class AddProductComponent {
   // Handle chart click event
   onChartClick(event: any, lockerType: string): void {
     if (event.name === "Booked") {
-      this.router.navigate(['/booked']);
+      this.router.navigate(['/branch/booked']);
     }
-    else if (event.name === "Booked") {
-      this.router.navigate(['/booked']);
+    else if (event.name === "Available") {
+      this.router.navigate(['/branch/available']);
     }
   }
+
+  getLockerCount(lockers: any[]): number {
+    return lockers.reduce((total, item) => total + item.value, 0);
+  }
+  
 
 }

@@ -1,20 +1,20 @@
 <div class="container mb-5">
-    <div class="card mt-2" >
+    <div class="card mt-2">
         <div class="card-header">
             <button class="btn btn-sm btn-success" (click)="goBack()">⬅ Go Back</button>
         </div>
         <div class="card-body">
-            <mat-form-field class="">
+            <mat-form-field>
                 <mat-label>Filter</mat-label>
                 <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
             </mat-form-field>
 
-            <table mat-table [dataSource]="dataSource" >
+            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
                 <!-- Position Column -->
                 <ng-container matColumnDef="position">
                     <th mat-header-cell *matHeaderCellDef> No. </th>
-                    <td mat-cell *matCellDef="let element"> {{element.position}} .</td>
+                    <td mat-cell *matCellDef="let element"> {{element.position}} </td>
                 </ng-container>
 
                 <!-- Locker number Column -->
@@ -23,46 +23,35 @@
                     <td mat-cell *matCellDef="let element"> {{element.lockerNo}} </td>
                 </ng-container>
 
-                <!-- Customer id Column -->
+                <!-- Customer ID Column -->
                 <ng-container matColumnDef="custId">
                     <th mat-header-cell *matHeaderCellDef> Customer Id </th>
-                    <td mat-cell *matCellDef="let element"> {{element.custId}} </td>
+                    <td mat-cell *matCellDef="let element">
+                        <mat-form-field appearance="outline">
+                            <input matInput [(ngModel)]="element.custId" (input)="checkCustId(element)"
+                                placeholder="Enter Customer ID">
+                        </mat-form-field>
+
+                        <!-- Show validation message only if user has typed something -->
+                        <span *ngIf="element.custId && element.isValid === true" class="valid-user">✔ User is
+                            valid</span>
+                        <span *ngIf="element.custId && element.isValid === false" class="invalid-user">❌ User is not
+                            valid</span>
+                    </td>
                 </ng-container>
 
-                <!-- Customer Name Column -->
-                <ng-container matColumnDef="custName">
-                    <th mat-header-cell *matHeaderCellDef> Customer Nmae </th>
-                    <td mat-cell *matCellDef="let element"> {{element.custName}} </td>
-                </ng-container>
 
-                <!-- Assignment date Column -->
-                <ng-container matColumnDef="assignmentDate">
-                    <th mat-header-cell *matHeaderCellDef> Date Of assignment </th>
-                    <td mat-cell *matCellDef="let element"> {{element.assignmentDate}} </td>
-                </ng-container>
-
-                <!-- Last Visit Column -->
-                <ng-container matColumnDef="lastVisit">
-                    <th mat-header-cell *matHeaderCellDef> Last Visit </th>
-                    <td mat-cell *matCellDef="let element"> {{element.lastVisit}} </td>
-                </ng-container>
-
-                <!-- Visit Column -->
-                <ng-container matColumnDef="totalVisit">
-                    <th mat-header-cell *matHeaderCellDef> Visit Count</th>
-                    <td mat-cell *matCellDef="let element"> {{element.totalVisit}} </td>
-                </ng-container>
 
                 <!-- Action Column -->
                 <ng-container matColumnDef="action">
                     <th mat-header-cell *matHeaderCellDef> Action </th>
                     <td mat-cell *matCellDef="let element">
-                        <button mat-button class="cancel-btn" (click)="openRemarksDialog(element)">
-                            Release
+                        <button mat-raised-button class="book-btn" (click)="bookLocker(element)"
+                            [disabled]="!element.isValid">
+                            Book
                         </button>
                     </td>
                 </ng-container>
-                
 
                 <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                 <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
@@ -73,5 +62,3 @@
                 </tr>
             </table>
         </div>
-    </div>
-</div>
