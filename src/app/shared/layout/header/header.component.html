@@ -1,5 +1,9 @@
 <mat-toolbar class="custom-toolbar">
-  <div class="header-content">
+  <div class="title-container">
     <h1 class="header-title">Bank Locker Availability System</h1>
   </div>
+
+  <span class="spacer"></span> <!-- Pushes the logout button to the right -->
+
+  <button *ngIf="showLogout" class="logout-button" (click)="logout()">Logout</button>
 </mat-toolbar>
