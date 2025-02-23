@@ -1,0 +1,75 @@
+<div class="container mb-5">
+    <div class="card mt-2">
+        <div class="card-body">
+
+        
+    <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-12 mt-1">
+            <!-- Total Lockers -->
+            <div class="card total-lockers">
+                <div class="card-body text-center">
+                    <i class="fas fa-box fa-3x"></i>
+                    <h4>Total Lockers</h4>
+                    <h2>100</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 col-sm-12 mt-1">
+            <!-- Booked Lockers -->
+            <div class="card booked-lockers">
+                <div class="card-body text-center">
+                    <i class="fas fa-lock fa-3x"></i>
+                    <h4>Booked Lockers</h4>
+                    <h2>60</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-12 col-sm-12 mt-1">
+            <!-- Available Lockers -->
+            <div class="card available-lockers">
+                <div class="card-body text-center">
+                    <i class="fas fa-unlock fa-3x"></i>
+                    <h4>Available Lockers</h4>
+                    <h2>40</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Locker Charts -->
+    <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-12 d-flex flex-column align-items-center">
+            <div class="chart-container">
+                <ngx-charts-pie-chart [view]="view" [results]="small" [scheme]="colorScheme"
+                    [doughnut]="false" [legend]="false" [explodeSlices]="false" (select)="onChartClick($event, 'small')">
+                </ngx-charts-pie-chart>
+                <div class="locker-text"><h2>Small Locker</h2></div>
+                <h3 class="locker-count">{{ getLockerCount(small) }}</h3>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 col-sm-12 d-flex flex-column align-items-center">
+            <div class="chart-container">
+                <ngx-charts-pie-chart [view]="view" [results]="medium" [scheme]="colorScheme"
+                    [doughnut]="false" [legend]="false" [explodeSlices]="false" (select)="onChartClick($event, 'medium')">
+                </ngx-charts-pie-chart>
+                <div class="locker-text"><h2>Medium Locker</h2></div>
+                <h3 class="locker-count">{{ getLockerCount(medium) }}</h3>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-12 col-sm-12 d-flex flex-column align-items-center">
+            <div class="chart-container">
+                <ngx-charts-pie-chart [view]="view" [results]="large" [scheme]="colorScheme"
+                    [doughnut]="false" [legend]="false" [explodeSlices]="false" (select)="onChartClick($event, 'large')">
+                </ngx-charts-pie-chart>
+                <div class="locker-text"><h2>Large Locker</h2></div>
+                <h3 class="locker-count">{{ getLockerCount(large) }}</h3>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>

@@ -1,0 +1,40 @@
+/* Custom Toolbar Styling */
+.custom-toolbar {
+    background-color: #007bff; /* Primary Blue */
+    color: white;
+    display: flex;
+    justify-content: center; /* Center align text */
+    align-items: center;
+    padding: 16px;
+}
+/* Header Title Styling */
+.header-title {
+    font-size: 24px; /* Adjust font size */
+    font-weight: bold;
+    margin: 500px;
+    font-family: "Space Grotesk", "DM Sans", "Urbanist", "Segoe UI", sans-serif;
+}
+
+.spacer {
+    flex-grow: 1; /* Pushes the button to the far right */
+  }
+  
+  .logout-button {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+  }
+  
+  .logout-button:hover {
+    background-color: #d32f2f;
+  }
+  
+  .logout-button:focus {
+    outline: none;
+  }

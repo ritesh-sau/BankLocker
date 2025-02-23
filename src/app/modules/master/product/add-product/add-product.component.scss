@@ -1,0 +1,62 @@
+.row .card {
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.card h4 {
+    font-size: 1.2rem;
+    margin-top: 10px;
+}
+
+.card h2 {
+    font-size: 2rem;
+    font-weight: bold;
+}
+.text-left{
+    text-align: left !important;
+}
+.total-lockers {
+    background-color: #17a2b8; /* Info color */
+    color: white;
+}
+
+.booked-lockers {
+    background-color: #dc3545; /* Danger color */
+    color: white;
+}
+
+.available-lockers {
+    background-color: #28a745; /* Success color */
+    color: white;
+}
+
+
+.chart-container {
+    text-align: center;
+    padding: 10px;
+}
+
+.locker-text {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+
+@media (min-width: 1200px) {
+    .container, .container-lg, .container-md, .container-sm, .container-xl {
+        max-width: 1115px !important;
+    }
+}
+
+.locker-count {
+    font-size: 25px;
+    font-weight: bold;
+    color: #007bff;
+    margin-bottom: 10px;
+}
+
+
+

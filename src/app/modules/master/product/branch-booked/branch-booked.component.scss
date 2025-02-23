@@ -1,0 +1,53 @@
+/* Structure */
+table {
+    width: 100%;
+  }
+  
+  .mat-mdc-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+
+  .cancel-btn {
+    background-color: #ff5722; /* Stylish Orange */
+    color: white;
+    font-weight: bold;
+    padding: 8px 16px;
+    border-radius: 5px;
+    text-transform: uppercase;
+    transition: 0.3s ease-in-out;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+/* Hover Effect */
+.cancel-btn:hover {
+    background-color: #e64a19; /* Darker Orange */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Button Click Effect */
+.cancel-btn:active {
+    transform: scale(0.95);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 600px) {
+    .cancel-btn {
+        width: 100%; /* Full width on small screens */
+        padding: 10px;
+        font-size: 16px;
+    }
+}
+.card-header {
+    background-color: transparent !important;
+}
+mat-form-field{
+    background-color: transparent !important;
+}
+input{
+    background-color: transparent !important;
+}
+
+  

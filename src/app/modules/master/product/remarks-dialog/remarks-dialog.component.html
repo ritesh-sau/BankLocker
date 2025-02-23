@@ -1,0 +1,12 @@
+<h2 mat-dialog-title class="dialog-title">Release Locker No.: {{ data.lockerNo }}</h2>
+<mat-dialog-content class="dialog-content">
+    <p class="customer-info">Customer: <strong>{{ data.custName }}</strong></p>
+    <mat-form-field class="full-width">
+        <mat-label>Remarks</mat-label>
+        <textarea matInput [(ngModel)]="remarks" rows="3" class="custom-textarea"></textarea>
+    </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions class="dialog-actions">
+    <button mat-button class="cancel-btn" (click)="closeDialog()">Cancel</button>
+    <button mat-button class="submit-btn" (click)="submitRemarks()">Submit</button>
+</mat-dialog-actions>

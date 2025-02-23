@@ -1,0 +1,53 @@
+
+// @import '@angular/material/theming';
+
+
+// @include mat-core();
+
+
+// // Define the color palettes
+// $my-primary: mat-palette($mat-deep-purple, 500, 100, 900); // Primary palette with default hue and other hues
+// $my-accent: mat-palette($mat-amber, 700,  900); // Accent palette with default hue and other hues
+// $my-warn: mat-palette($mat-red); // Warn palette with default hue
+
+// // Create the light theme
+// $angular-default-theme: mat-light-theme(
+//   (
+//     color: (
+//       primary: $my-primary,
+//       accent: $my-accent,
+//       warn: $my-warn,
+//     ),
+//   )
+// );
+
+// // Include the light theme styles
+// @include angular-material-theme($angular-default-theme);
+
+// //dark mode
+// $angular-dark-theme: mat-dark-theme(
+//     (
+//         color: (
+//             primary: $my-accent,
+//             accent: $my-primary,
+//             warn: $my-warn
+//         ),
+//     )
+// );
+
+// .mat-drawer-container {
+//     background-color: #f8f5f1;
+// }
+
+// // $my-app-theme: mat.define-light-theme(
+// //   (
+// //     color: (
+// //       primary: $my-primary,
+// //       accent: $my-accent
+// //     ),
+// //     typography: mat.define-typography-config(),
+// //       density:0,
+// //   )
+// // );
+
+// // @include mat.define-light-theme($my-app-theme);

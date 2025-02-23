@@ -1,0 +1,29 @@
+<!-- Import Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<div class="login-container mt-2">
+  <div class="login-glass">
+    <div class="brand-header">
+      <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Bank Locker Icon" class="brand-logo">
+      <h2 class="brand-title">Secure Vault Login</h2>
+      <p class="brand-subtitle">Access your locker safely</p>
+    </div>
+
+    <form (ngSubmit)="submitForm()" [formGroup]="loginForm">
+      <mat-form-field class="input-field" appearance="outline">
+        <mat-label>Username</mat-label>
+        <input matInput formControlName="username" placeholder="Enter username" required />
+        <mat-error *ngIf="loginForm.get('username')?.hasError('required')">Required</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="input-field" appearance="outline">
+        <mat-label>Password</mat-label>
+        <input matInput type="password" formControlName="password" placeholder="Enter password" required />
+        <mat-error *ngIf="loginForm.get('password')?.hasError('required')">Required</mat-error>
+      </mat-form-field>
+
+      <button mat-raised-button class="login-btn" type="submit">Login</button>
+      <p class="forgot-password">Check Locker Avability <a (click)="goBack()">Click here</a></p>
+    </form>
+  </div>
+</div>
