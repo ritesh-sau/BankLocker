@@ -1,15 +1,21 @@
 mat-dialog-actions {
     display: flex;
-    justify-content: center;  /* Center buttons horizontally */
-    align-items: center;  /* Center buttons vertically */
-    gap: 20px;  /* Space between buttons */
+    justify-content: center;
+    /* Center buttons horizontally */
+    align-items: center;
+    /* Center buttons vertically */
+    gap: 20px;
+    /* Space between buttons */
     width: 100%;
-    height: 100px;  /* Adjust height to center within dialog */
+    height: 100px;
+    /* Adjust height to center within dialog */
 }
 
 /* Common Button Styles */
-.cancel-btn, .submit-btn {
-    width: 150px;  /* Uniform width */
+.cancel-btn,
+.submit-btn {
+    width: 150px;
+    /* Uniform width */
     padding: 10px 20px;
     font-weight: bold;
     border-radius: 5px;
@@ -46,20 +52,23 @@ mat-dialog-actions {
 
 /* Improved Textarea */
 .custom-textarea {
-    background-color: #f9f9f9; /* Light background */
+    background-color: #f9f9f9;
+    /* Light background */
     border: 1px solid #ccc;
     border-radius: 8px;
     padding: 10px;
     font-size: 1rem;
     transition: 0.3s;
     width: 100%;
-    resize: none; /* Prevents resizing */
+    resize: none;
+    /* Prevents resizing */
 }
 
 /* Focus Effect */
 .custom-textarea:focus {
     outline: none;
-    border-color: #4caf50; /* Green highlight on focus */
+    border-color: #4caf50;
+    /* Green highlight on focus */
     box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
 }
 
@@ -70,3 +79,142 @@ mat-dialog-actions {
     gap: 20px;
 }
 
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    /* Semi-transparent background */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.loading-message {
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* Button Styling */
+.btn {
+    font-size: 18px;
+    font-weight: bold;
+    padding: 12px 24px;
+    border-radius: 8px;
+    transition: 0.3s ease-in-out;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+.btn-secondary {
+    background-color: #28a745;
+    border: none;
+}
+
+.btn-secondary:hover {
+    background-color: #1e7e34;
+    transform: scale(1.05);
+}
+
+
+.validate-actions button {
+    width: 50%;
+    /* 50% of parent width */
+    max-width: 300px;
+    /* Set max width for better UI */
+    padding: 12px 20px;
+    /* Comfortable padding */
+    font-size: 15px;
+    /* Increase font size for better readability */
+    border-radius: 8px;
+    /* Rounded corners for modern look */
+    text-transform: uppercase;
+    /* Optional: Makes text uppercase */
+}
+
+.btn-primary {
+    background-color: #007bff;
+    /* Bootstrap Primary Color */
+    color: white;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    /* Bootstrap Secondary Color */
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    /* Darker blue on hover */
+}
+
+.btn-secondary:hover {
+    background-color: #545b62;
+    /* Darker gray on hover */
+}
+
+.validate-actions {
+    display: flex;
+    flex-direction: column;
+    /* Stack buttons vertically */
+    align-items: center;
+    /* Center horizontally */
+    gap: 10px;
+    /* Space between buttons */
+    width: 100%;
+}
+
+.success-message {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80px;
+    /* Same height as button area to avoid layout shift */
+    font-size: 20px;
+    font-weight: bold;
+    color: green;
+    text-align: center;
+    animation: fadeIn 0.5s ease-in-out;
+    /* Smooth fade-in effect */
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+p.validation-message {
+    font-weight: bold;
+    /* Makes the text bold */
+    color: rgb(26, 233, 11);
+    /* Sets text color to sky blue */
+    font-size: 18px;
+    /* Adjust font size */
+    text-align: center;
+    /* Centers the text */
+    margin-top: 10px;
+    /* Adds spacing from the spinner */
+}

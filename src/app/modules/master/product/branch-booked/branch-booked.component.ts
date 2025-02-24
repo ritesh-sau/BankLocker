@@ -5,6 +5,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatDialog } from '@angular/material/dialog';
 import { RemarksDialogComponent } from '../remarks-dialog/remarks-dialog.component';
 import { Router } from '@angular/router';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { CommonModule } from '@angular/common';
 
 export interface LockerElement {
   position: number;
@@ -31,11 +33,12 @@ const LOCKER_DATA: LockerElement[] = [
 @Component({
   selector: 'app-branch-booked',
   standalone: true,
-  imports: [MatFormFieldModule, MatInputModule, MatTableModule],
+  imports: [MatFormFieldModule, MatInputModule, MatTableModule,MatProgressSpinnerModule, CommonModule],
   templateUrl: './branch-booked.component.html',
   styleUrl: './branch-booked.component.scss',
 })
 export class BranchBookedComponent {
+  isloading = false;
 
   constructor(private dialog: MatDialog, private router: Router) {}
 
@@ -47,18 +50,26 @@ export class BranchBookedComponent {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  openRemarksDialog(element: LockerElement) {
+  openRemarksDialog(element: any, dataType: any) {
     const dialogRef = this.dialog.open(RemarksDialogComponent, {
       width: '400px',
-      data: { lockerNo: element.lockerNo, custName: element.custName }
+      data: { lockerNo: element.lockerNo, custName: element.custName, actionType: dataType, totalVisit: element.totalVisit } // ✅ Make sure actionType is correctly named
     });
-
+  
     dialogRef.afterClosed().subscribe(result => {
       if (result === 'submitted') {
         this.removeLocker(element);
       }
+      else if (result && result.success) {
+        // Increase visit count after successful validation
+        element.totalVisit += 1;
+  
+        // Trigger Angular change detection by updating the reference
+        this.dataSource.data = [...this.dataSource.data];
+      }
     });
   }
+  
 
   removeLocker(element: LockerElement) {
     this.dataSource.data = this.dataSource.data.filter(item => item.lockerNo !== element.lockerNo);
@@ -68,4 +79,5 @@ export class BranchBookedComponent {
   goBack() {
     this.router.navigate(['/master/product/addProduct']);
   }
+
 }

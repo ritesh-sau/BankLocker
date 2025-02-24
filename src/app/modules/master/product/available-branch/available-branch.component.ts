@@ -1,26 +1,23 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { MatDialog } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { Router } from '@angular/router';
 
-
-
 @Component({
   selector: 'app-available-branch',
   standalone: true,
-  imports: [MatFormFieldModule, MatInputModule, MatTableModule,FormsModule,CommonModule],
+  imports: [MatFormFieldModule, MatInputModule, MatTableModule, FormsModule, CommonModule],
   templateUrl: './available-branch.component.html',
   styleUrl: './available-branch.component.scss'
 })
 export class AvailableBranchComponent {
+  constructor(private router: Router) {}
 
-  constructor(private router: Router) {};
   displayedColumns: string[] = ['position', 'lockerNo', 'custId', 'action'];
-  
+
   // Predefined list of valid Customer IDs
   validCustIds: string[] = ['CUST123', 'CUST456', 'CUST789'];
 
@@ -39,14 +36,23 @@ export class AvailableBranchComponent {
       element.isValid = null; // Reset validation if input is empty
       return;
     }
-  
+
     element.custId = element.custId.toUpperCase(); // Convert input to uppercase
     element.isValid = this.validCustIds.includes(element.custId);
   }
 
-  // Function to handle button click
+  // Function to handle booking and remove booked locker
   bookLocker(element: any) {
-    alert(`Locker No.: ${element.lockerNo} booking succesfully for Customer ID: ${element.custId}`);
+    if (element.isValid) {
+      alert(`Locker No.: ${element.lockerNo} successfully booked for Customer ID: ${element.custId}`);
+      
+      // Remove booked row from table and reassign serial numbers
+      this.dataSource.data = this.dataSource.data
+        .filter(item => item.lockerNo !== element.lockerNo)
+        .map((item, index) => ({ ...item, position: index + 1 })); // Reset serial numbers
+    } else {
+      alert("Invalid Customer ID. Please enter a valid ID.");
+    }
   }
 
   // Apply Filter Function

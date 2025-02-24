@@ -1,12 +1,43 @@
-<h2 mat-dialog-title class="dialog-title">Release Locker No.: {{ data.lockerNo }}</h2>
-<mat-dialog-content class="dialog-content">
+<div class="overlay" *ngIf="isloading">
+    <mat-spinner></mat-spinner>
+    <p class="validation-message">{{ validationMessage }}</p>
+  </div>
+
+  <div class="success-message" *ngIf="isSuccess">
+    ✅ Validation Successful!
+</div>
+  
+
+<h2 mat-dialog-title class="dialog-title">
+    @if (action === 'Release') {
+      Release Locker No.: {{ data.lockerNo }}
+    } @else {
+      Validate Locker No.: {{ data.lockerNo }}
+    }
+  </h2>
+  
+  <mat-dialog-content class="dialog-content">
     <p class="customer-info">Customer: <strong>{{ data.custName }}</strong></p>
-    <mat-form-field class="full-width">
+  
+    @if (action === 'Release') {
+      <mat-form-field class="full-width">
         <mat-label>Remarks</mat-label>
         <textarea matInput [(ngModel)]="remarks" rows="3" class="custom-textarea"></textarea>
-    </mat-form-field>
-</mat-dialog-content>
-<mat-dialog-actions class="dialog-actions">
-    <button mat-button class="cancel-btn" (click)="closeDialog()">Cancel</button>
-    <button mat-button class="submit-btn" (click)="submitRemarks()">Submit</button>
+      </mat-form-field>
+    } @else {
+      <div class="validate-actions" *ngIf="!isloading && !isSuccess">
+        <button mat-button class="btn btn-primary btn-lg w-50 mb-4" (click)="performFaceRecognition()">Face Recognition</button>
+        <button mat-button class="btn btn-secondary btn-lg w-50" (click)="bioMatric()">Biomatric</button>
+      </div>
+    }
+  </mat-dialog-content>
+  
+  <mat-dialog-actions class="dialog-actions">
+    <button mat-button class="cancel-btn" *ngIf="!isSuccess" (click)="closeDialog()">Cancel</button>
+    <button mat-button class="submit-btn" *ngIf="isSuccess" (click)="closeDialogcickonOk()">OK</button>
+
+    @if (action === 'Release') {
+        <button mat-button class="submit-btn" (click)="submitRemarks()">Submit</button>
+    }
 </mat-dialog-actions>
+  

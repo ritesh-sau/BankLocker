@@ -1,19 +1,20 @@
 /* Structure */
 table {
     width: 100%;
-  }
-  
-  .mat-mdc-form-field {
+}
+
+.mat-mdc-form-field {
     font-size: 14px;
     width: 100%;
-  }
+}
 
-  .cancel-btn {
-    background-color: #ff5722; /* Stylish Orange */
+.cancel-btn {
+    background-color: #ff5722;
+    /* Stylish Orange */
     color: white;
     font-weight: bold;
-    padding: 8px 16px;
-    border-radius: 5px;
+    padding: 8px 10px;
+    border-radius: 20px;
     text-transform: uppercase;
     transition: 0.3s ease-in-out;
     border: none;
@@ -23,7 +24,8 @@ table {
 
 /* Hover Effect */
 .cancel-btn:hover {
-    background-color: #e64a19; /* Darker Orange */
+    background-color: #e64a19;
+    /* Darker Orange */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
@@ -35,19 +37,50 @@ table {
 /* Responsive Adjustments */
 @media (max-width: 600px) {
     .cancel-btn {
-        width: 100%; /* Full width on small screens */
+        width: 100%;
+        /* Full width on small screens */
         padding: 10px;
         font-size: 16px;
     }
 }
+
+.validate-btn {
+    background-color: #3cb510;
+    color: white;
+    padding: 8px 10px;
+    border-radius: 20px;
+    border: none !important;
+}
+
+.validate-btn:disabled {
+    background-color: grey;
+    cursor: not-allowed;
+}
+
 .card-header {
     background-color: transparent !important;
 }
-mat-form-field{
-    background-color: transparent !important;
-}
-input{
+
+mat-form-field {
     background-color: transparent !important;
 }
 
-  
+input {
+    background-color: transparent !important;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgb(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+.spacing-btn {
+    margin-right: 5px; /* Adjust spacing as needed */
+}

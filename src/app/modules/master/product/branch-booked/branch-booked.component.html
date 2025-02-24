@@ -1,6 +1,12 @@
+<div class="overlay" *ngIf="isloading">
+    <mat-spinner></mat-spinner>
+</div>
+
+
+
 <div class="container mb-5">
     <div class="card mt-2" >
-        <div class="card-header">
+       <div class="card-header">
             <button class="btn btn-sm btn-success" (click)="goBack()">⬅ Go Back</button>
         </div>
         <div class="card-body">
@@ -57,11 +63,21 @@
                 <ng-container matColumnDef="action">
                     <th mat-header-cell *matHeaderCellDef> Action </th>
                     <td mat-cell *matCellDef="let element">
-                        <button mat-button class="cancel-btn" (click)="openRemarksDialog(element)">
+                        <!-- Validate Button -->
+                        <button mat-button class="validate-btn spacing-btn" 
+                                (click)="openRemarksDialog(element, 'Validate')" 
+                                [disabled]="element.isLoading">
+                            {{ element.isLoading ? 'Biometric in Progress...' : 'Validate' }}
+                        </button>
+                
+                        <!-- Release Button -->
+                        <button mat-button class="cancel-btn" (click)="openRemarksDialog(element,'Release')">
                             Release
                         </button>
                     </td>
                 </ng-container>
+                
+                
                 
 
                 <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

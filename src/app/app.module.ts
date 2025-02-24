@@ -71,10 +71,8 @@ import { PaymentComponent } from './modules/master/user/payment/payment.componen
     MatSelectModule,
     BranchBookedComponent,
     AvailableBranchComponent,
-   
     MatDialogModule
-        
-
+          
   ],
   providers: [MenuItemService, provideHttpClient()],
   bootstrap: [AppComponent]
