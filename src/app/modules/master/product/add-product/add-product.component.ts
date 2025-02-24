@@ -14,22 +14,25 @@ export class AddProductComponent {
   // Donut chart data
   small = [
     { name: 'Booked', value: 25 },
-    { name: 'Available', value: 15 }
+    { name: 'Available', value: 15 },
+    { name: 'Reserved', value: 5 }
   ];
   medium = [
     { name: "Booked", value: 15 },
-    { name: "Available", value: 15 }
+    { name: "Available", value: 15 },
+    { name: 'Reserved', value: 3 }
   ];
 
   // Example data for Large Locker
   large = [
     { name: "Booked", value: 20 },
-    { name: "Available", value: 10 }
+    { name: "Available", value: 10 },
+    { name: 'Reserved', value: 2 }
   ];
 
   // Define color scheme properly
   colorScheme: any = {
-    domain: ['#ff5733', '#33b5e5'] // Two colors (Red and Blue)
+    domain: ['#ff5733', '#33b5e5','#FFAA00'] // Two colors (Red and Blue)
   };
 
   // Chart settings
@@ -43,6 +46,9 @@ export class AddProductComponent {
     }
     else if (event.name === "Available") {
       this.router.navigate(['/branch/available']);
+    }
+    else if (event.name === "Reserved") {
+      this.router.navigate(['/reserved/locker']);
     }
   }
 

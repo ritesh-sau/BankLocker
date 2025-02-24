@@ -7,6 +7,7 @@ import { UserComponent } from "./modules/master/user/user.component";
 import { BranchBookedComponent } from "./modules/master/product/branch-booked/branch-booked.component";
 import { AvailableBranchComponent } from "./modules/master/product/available-branch/available-branch.component";
 import { PaymentComponent } from "./modules/master/user/payment/payment.component";
+import { ReservedLockersComponent } from "./modules/master/product/reserved-lockers/reserved-lockers.component";
 
 
 const routes: Routes = [
@@ -44,6 +45,10 @@ const routes: Routes = [
     {
         path: 'payment',
         component: PaymentComponent,
+    },
+    {
+        path: 'reserved/locker',
+        component: ReservedLockersComponent,
     },
     {
         path: 'master/product',

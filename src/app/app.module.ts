@@ -33,6 +33,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { RemarksDialogComponent } from './modules/master/product/remarks-dialog/remarks-dialog.component';
 import { AvailableBranchComponent } from './modules/master/product/available-branch/available-branch.component';
 import { PaymentComponent } from './modules/master/user/payment/payment.component';
+import { ReservedLockersComponent } from './modules/master/product/reserved-lockers/reserved-lockers.component';
 
 
 
@@ -71,7 +72,8 @@ import { PaymentComponent } from './modules/master/user/payment/payment.componen
     MatSelectModule,
     BranchBookedComponent,
     AvailableBranchComponent,
-    MatDialogModule
+    MatDialogModule,
+    ReservedLockersComponent
           
   ],
   providers: [MenuItemService, provideHttpClient()],

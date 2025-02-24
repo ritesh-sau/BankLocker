@@ -1,0 +1,106 @@
+/* Structure */
+table {
+    width: 100%;
+}
+
+.mat-mdc-form-field {
+    font-size: 14px;
+    width: 100%;
+}
+
+.cancel-btn {
+    background-color: #ff5722;
+    /* Stylish Orange */
+    color: white;
+    font-weight: bold;
+    padding: 8px 10px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    transition: 0.3s ease-in-out;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+/* Hover Effect */
+.cancel-btn:hover {
+    background-color: #e64a19;
+    /* Darker Orange */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Button Click Effect */
+.cancel-btn:active {
+    transform: scale(0.95);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 600px) {
+    .cancel-btn {
+        width: 100%;
+        /* Full width on small screens */
+        padding: 10px;
+        font-size: 16px;
+    }
+}
+
+.validate-btn {
+    background-color: #3cb510;
+    color: white;
+    padding: 8px 10px;
+    border-radius: 20px;
+    border: none !important;
+}
+
+.validate-btn:disabled {
+    background-color: grey;
+    cursor: not-allowed;
+}
+
+.card-header {
+    background-color: transparent !important;
+}
+
+mat-form-field {
+    background-color: transparent !important;
+}
+
+input {
+    background-color: transparent !important;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgb(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.book-btn {
+    background-color: #28a745; /* Green color */
+    color: white; /* White text */
+    font-size: 16px; /* Readable font size */
+    font-weight: bold;
+    padding: 10px 20px; /* Comfortable padding */
+    border: none;
+    border-radius: 8px; /* Rounded corners */
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.book-btn:hover {
+    background-color: #218838; /* Darker green on hover */
+    transform: scale(1.05); /* Slight zoom effect */
+}
+
+.book-btn:active {
+    background-color: #1e7e34; /* Even darker green on click */
+    transform: scale(0.98); /* Slight press effect */
+}
+
