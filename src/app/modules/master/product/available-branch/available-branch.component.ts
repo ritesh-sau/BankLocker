@@ -19,7 +19,8 @@ export class AvailableBranchComponent {
   displayedColumns: string[] = ['position', 'lockerNo', 'custId', 'action'];
 
   // Predefined list of valid Customer IDs
-  validCustIds: string[] = ['CUST123', 'CUST456', 'CUST789'];
+  //validCustIds: string[] = ['', 'CUST456', 'CUST789'];
+  validCustIds: string[] = ['123456789', '567891234', '678912345'];
 
   // Sample Data
   dataSource = new MatTableDataSource([

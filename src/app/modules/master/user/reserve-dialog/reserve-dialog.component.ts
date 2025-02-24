@@ -41,7 +41,7 @@ export class ReserveDialogComponent {
     this.dialogRef.close();
   }
 
-  validCustIds: string[] = ['456789123', '567891234', '678912345'];
+  validCustIds: string[] = ['123456789', '567891234', '678912345'];
 
   checkCustId(event: Event) {
     const custId = (event.target as HTMLInputElement).value;

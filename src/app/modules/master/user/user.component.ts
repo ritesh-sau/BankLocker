@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ReserveDialogComponent } from './reserve-dialog/reserve-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
+import { Route, Router } from '@angular/router';
 
 
 export interface ReservedElement {
@@ -20,7 +21,7 @@ export interface ReservedElement {
 
 export class UserComponent {
 
-  constructor(private dialog: MatDialog){
+  constructor(private dialog: MatDialog, private router: Router){
     
   }
 
@@ -133,5 +134,8 @@ export class UserComponent {
         }
       });
     }
-  
+
+    goBack() {
+      this.router.navigate(['/dashboard']);
+    }
 }
