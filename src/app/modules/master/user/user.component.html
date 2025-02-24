@@ -1,9 +1,14 @@
 <div class="container-fluid mt-5 shadow-lg p-4 bg-white rounded">
-  <div class="card-header">
-    <button class="btn btn-sm btn-success" (click)="goBack()">⬅ Go Back</button>
-</div>
-  <h3 class="fw-bold text-primary">Find Your Nearest Bank Locker</h3>
-  <p class="text-muted">Search by branch name or select a state, city, locality, and branch to find a locker.</p>
+  <div class="row">
+    <div class="col-9">
+      <h3 class="fw-bold text-primary">Find Your Nearest Bank Locker</h3>
+      <p class="text-muted">Search by branch name or select a state, city, locality, and branch to find a locker.</p>
+    </div>
+    <div class="col-3 text-right">
+      <button class="btn btn-sm btn-success" style="float: right;" (click)="goBack()">⬅ Go Back</button>
+    </div>
+  </div>
+  
 
   <!-- Search Bar -->
   <div class="d-flex align-items-center mt-4">
@@ -69,7 +74,7 @@
         <td>{{ locker.size }}</td>
         <td>{{ locker.available }}</td>
         <td>
-          <button class="btn btn-success btn-sm" (click)="openDialog(locker)">Reserve Now</button>
+          <button class="btn btn-success btn-sm" (click)="openDialog(locker)"><i class="fa-solid fa-circle-check"></i> Reserve Now</button>
         </td>
       </tr>
       <tr *ngIf="lockerData.length === 0">

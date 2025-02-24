@@ -1,68 +1,72 @@
 <div class="container mt-5">
-    <div class="card shadow p-4">
-      <h4 class="text-center mb-4">Payment Information</h4>
-  
-      <!-- Payment Methods -->
-      <div class="mb-3">
-        <div class="form-check">
-          <input class="form-check-input" type="radio" id="card" value="card" [(ngModel)]="selectedPaymentMethod">
-          <label class="form-check-label" for="card">
-            <i class="fas fa-credit-card text-primary me-2"></i> Debit/Credit Card
-          </label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="radio" id="upi" value="upi" [(ngModel)]="selectedPaymentMethod">
-          <label class="form-check-label" for="upi">
-            <i class="fab fa-google-pay text-success me-2"></i> UPI
-          </label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="radio" id="netbanking" value="netbanking" [(ngModel)]="selectedPaymentMethod">
-          <label class="form-check-label" for="netbanking">
-            <i class="fas fa-university text-danger me-2"></i> Net Banking
-          </label>
-        </div>
+  <div class="card shadow p-4">
+    <h4 class="text-center mb-4 text-bold">Payment Information</h4>
+
+    <!-- Payment Methods -->
+    <div class="mb-3">
+      <div class="form-check mt-2">
+        <input class="form-check-input" type="radio" id="card" value="card" [(ngModel)]="selectedPaymentMethod" name="paymentMethod">
+        <label class="form-check-label" for="card">
+          <i class="fas fa-credit-card text-primary me-2"></i> Debit/Credit Card
+        </label>
       </div>
-  
-      <!-- Card Payment -->
-      <div *ngIf="selectedPaymentMethod === 'card'" class="mb-3">
-        <label class="form-label">Card Number</label>
-        <input type="text" class="form-control" [(ngModel)]="cardDetails.number" placeholder="XXXX-XXXX-XXXX-XXXX">
-  
-        <div class="row mt-2">
-          <div class="col">
-            <label class="form-label">Expiry Date</label>
-            <input type="text" class="form-control" [(ngModel)]="cardDetails.expiry" placeholder="MM/YY">
-          </div>
-          <div class="col">
-            <label class="form-label">CVV</label>
-            <input type="password" class="form-control" [(ngModel)]="cardDetails.cvv" placeholder="XXX">
-          </div>
-        </div>
-  
-        <label class="form-label mt-2">Cardholder Name</label>
-        <input type="text" class="form-control" [(ngModel)]="cardDetails.name" placeholder="Full Name">
+      <div class="form-check mt-3">
+        <input class="form-check-input" type="radio" id="upi" value="upi" [(ngModel)]="selectedPaymentMethod" name="paymentMethod">
+        <label class="form-check-label" for="upi">
+          <i class="fab fa-google-pay text-success me-2"></i> UPI
+        </label>
       </div>
-  
-      <!-- UPI Payment -->
-      <div *ngIf="selectedPaymentMethod === 'upi'" class="mb-3">
-        <label class="form-label">UPI ID</label>
-        <input type="text" class="form-control" [(ngModel)]="upiId" placeholder="example@upi">
-      </div>
-  
-      <!-- Net Banking -->
-      <div *ngIf="selectedPaymentMethod === 'netbanking'" class="mb-3">
-        <label class="form-label">Select Bank</label>
-        <select class="form-select" [(ngModel)]="selectedBank">
-          <option *ngFor="let bank of banks" [value]="bank">{{ bank }}</option>
-        </select>
-      </div>
-  
-      <!-- Buttons -->
-      <div class="d-flex justify-content-between mt-4">
-        <button class="btn btn-danger" (click)="cancelPayment()"><i class="fas fa-times"></i> Cancel</button>
-        <button class="btn btn-success" (click)="submitPayment()"><i class="fas fa-check"></i> Pay Now</button>
+      <div class="form-check mt-3">
+        <input class="form-check-input" type="radio" id="netbanking" value="netbanking" [(ngModel)]="selectedPaymentMethod" name="paymentMethod">
+        <label class="form-check-label" for="netbanking">
+          <i class="fas fa-university text-danger me-2"></i> Net Banking
+        </label>
       </div>
     </div>
+
+    <!-- Card Payment -->
+    <div *ngIf="selectedPaymentMethod === 'card'" class="mb-3">
+      <label class="form-label">Card Number</label>
+      <input type="text" class="form-control" [(ngModel)]="cardDetails.number" placeholder="XXXX-XXXX-XXXX-XXXX" required (input)="validateForm()">
+
+      <div class="row mt-2">
+        <div class="col">
+          <label class="form-label">Expiry Date</label>
+          <input type="text" class="form-control" [(ngModel)]="cardDetails.expiry" placeholder="MM/YY" required (input)="validateForm()">
+        </div>
+        <div class="col">
+          <label class="form-label">CVV</label>
+          <input type="password" class="form-control" [(ngModel)]="cardDetails.cvv" placeholder="XXX" required (input)="validateForm()">
+        </div>
+      </div>
+
+      <label class="form-label mt-2">Cardholder Name</label>
+      <input type="text" class="form-control" [(ngModel)]="cardDetails.name" placeholder="Full Name" required (input)="validateForm()">
+    </div>
+
+    <!-- UPI Payment -->
+    <div *ngIf="selectedPaymentMethod === 'upi'" class="mb-3">
+      <label class="form-label">UPI ID</label>
+      <input type="text" class="form-control" [(ngModel)]="upiId" placeholder="example@upi" required (input)="validateForm()">
+    </div>
+
+    <!-- Net Banking -->
+    <div *ngIf="selectedPaymentMethod === 'netbanking'" class="mb-3">
+      <label class="form-label">Select Bank</label>
+      <select class="form-select" [(ngModel)]="selectedBank" required (change)="validateForm()">
+        <option value="">Select a Bank</option>
+        <option *ngFor="let bank of banks" [value]="bank">{{ bank }}</option>
+      </select>
+    </div>
+
+    <!-- Buttons -->
+    <div class="d-flex justify-content-between mt-4">
+      <button class="btn btn-danger btn-sm" (click)="cancelPayment()">
+        <i class="fas fa-times"></i> Cancel
+      </button>
+      <button class="btn btn-success btn-sm" (click)="submitPayment()" [disabled]="!isFormValid">
+        <i class="fas fa-check"></i> Pay Now
+      </button>
+    </div>
   </div>
-  
+</div>

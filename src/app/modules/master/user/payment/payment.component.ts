@@ -8,30 +8,42 @@ import { Router } from '@angular/router';
 })
 export class PaymentComponent {
   
-  constructor(
-     private router: Router
-  ){}
+  constructor(private router: Router) {}
 
-  selectedPaymentMethod: string = 'card';
+  selectedPaymentMethod: string = '';
+  isFormValid: boolean = false;
+
   cardDetails = { number: '', expiry: '', cvv: '', name: '' };
   upiId: string = '';
-  selectedBank: string = 'HDFC';
+  selectedBank: string = '';
+  banks = ["HDFC Bank", "ICICI Bank", "SBI", "Axis Bank"];
 
-  banks = ['HDFC Bank', 'ICICI Bank', 'SBI', 'Axis Bank'];
-
-  submitPayment() {
-    console.log('Payment Method:', this.selectedPaymentMethod);
+  validateForm() {
     if (this.selectedPaymentMethod === 'card') {
-      console.log('Card Details:', this.cardDetails);
+      this.isFormValid =
+        /^\d{16}$/.test(this.cardDetails.number.replace(/\D/g, '')) && // Ensure only 16 digits
+        /^\d{2}\/\d{2}$/.test(this.cardDetails.expiry) && // Format MM/YY
+        /^\d{3}$/.test(this.cardDetails.cvv) && // Exactly 3 digits
+        this.cardDetails.name.trim().length > 0; // Non-empty name
     } else if (this.selectedPaymentMethod === 'upi') {
-      console.log('UPI ID:', this.upiId);
+      this.isFormValid = this.upiId.includes('@');
     } else if (this.selectedPaymentMethod === 'netbanking') {
-      console.log('Bank:', this.selectedBank);
+      this.isFormValid = this.selectedBank.trim().length > 0;
+    } else {
+      this.isFormValid = false;
     }
-    alert('Payment Submitted!');
   }
 
-  cancelPayment(){
+  submitPayment() {
+    if (this.isFormValid) {
+      alert('Payment Done Successful!');
+      this.router.navigate(['/user-access']);
+    }
+  }
+
+  cancelPayment() {
+    this.selectedPaymentMethod = '';
+    this.isFormValid = false;
     this.router.navigate(['/user-access']);
   }
 }

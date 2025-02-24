@@ -7,34 +7,37 @@
       
     </div>
   
-    <!-- Modal Body -->
-    <div class="modal-body">
-      <form #lockerForm="ngForm">
+    <form #lockerForm="ngForm">
+      <!-- Modal Body -->
+      <div class="modal-body">
+        
         <!-- Customer ID -->
         <div class="mb-4">
           <label class="form-label">Customer ID</label>
-          <input type="text" class="form-control input-lg" [(ngModel)]="customerId" name="customerId" (input)="checkCustId($event)" placeholder="Enter Customer ID">
-            <span *ngIf="isCustIdvalid === true" class="valid-user"><span class="text-success">✔</span> User is valid</span>
-            <span *ngIf="isCustIdvalid === false" class="invalid-user">❌ User is not valid</span>
+          <input type="text" class="form-control input-lg" [(ngModel)]="customerId" name="customerId" (input)="checkCustId($event)" placeholder="Enter Customer ID" required>
+          
+          <span *ngIf="isCustIdvalid === true" class="valid-user">
+            <span class="text-success">✔</span> User is valid
+          </span>
+          <span *ngIf="isCustIdvalid === false" class="invalid-user">
+            ❌ User is not valid
+          </span>
         </div>
-  
-        <!-- OR Divider -->
-        <!-- <div class="text-center my-3">
-          <span class="divider-text">OR</span>
-        </div> -->
-  
-        <!-- Account Number -->
-        <!-- <div class="mb-4">
-          <label class="form-label">Account Number</label>
-          <input type="text" class="form-control input-lg" [(ngModel)]="accountNo" name="accountNo" placeholder="Enter account number">
-        </div> -->
-      </form>
-    </div>
-  
-    <!-- Modal Footer -->
-    <div class="modal-footer d-flex justify-content-between">
-      <button type="button" class="btn btn-outline-danger btn-sm" (click)="closeDialog()">Cancel</button>
-      <button type="button" class="btn btn-success btn-sm" (click)="submitRemarks()" [disabled]="!lockerForm.valid">Proceed To Pay</button>
-    </div>
+    
+      </div>
+    
+      <!-- Modal Footer -->
+      <div class="modal-footer d-flex justify-content-between">
+        <button type="button" class="btn btn-danger btn-xs" (click)="closeDialog()"><i class="fas fa-times"></i> Cancel</button>
+        
+        <!-- Disable button if form is invalid or customer ID is invalid -->
+        <button type="button" class="btn btn-success btn-xs" 
+          (click)="submitRemarks()" 
+          [disabled]="!lockerForm.valid || isCustIdvalid === false">
+          <i class="fa-brands fa-amazon-pay"></i> Proceed To Pay
+        </button>
+      </div>
+    </form>
+    
   </div>
   
