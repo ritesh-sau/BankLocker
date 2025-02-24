@@ -5,14 +5,14 @@
   <!-- Search Bar -->
   <div class="d-flex align-items-center mt-4">
     <div class="search-bar w-100 me-2 d-flex border border-primary rounded-pill p-1 bg-light">
-      <input type="text" [(ngModel)]="searchQuery" class="form-control border-0 bg-light" placeholder="Enter branch name">
+      <input type="text" [(ngModel)]="searchQuery" (ngModelChange)="searchBranch()" class="form-control border-0 bg-light" placeholder="Enter branch name">
       <button class="btn text-primary" (click)="searchBranch()"><i class="fas fa-search"></i></button>
     </div>
     <button class="btn btn-primary px-4" (click)="searchBranch()">Search</button>
   </div>
 
   <!-- OR Divider -->
-  <div class="divider">OR</div>
+  <div class="text-center my-3 fw-bold text-muted divider">OR</div>
 
   <!-- State, City, Locality, Branch Selection -->
   <h5 class="fw-bold text-primary">Select Your Location</h5>
@@ -40,7 +40,7 @@
     </div>
     <div class="col-md-3">
       <label class="fw-bold">Branch</label>
-      <select class="form-select border-primary" [(ngModel)]="selectedBranch">
+      <select class="form-select border-primary" [(ngModel)]="selectedBranch" (change)="updateLockerData()">
         <option value="">- Select Branch -</option>
         <option *ngFor="let branch of branches" [value]="branch">{{ branch }}</option>
       </select>
@@ -51,20 +51,22 @@
   <h5 class="fw-bold mt-4 text-primary">Locker Availability</h5>
   <table class="table table-bordered mt-2 shadow-sm">
     <thead class="bg-primary text-white">
-      <tr>
-        <th>Locker ID</th>
-        <th>Size</th>
+      <tr>        
         <th>Branch Name</th>
+        <th>Address</th>
+        <th>Locker Size</th>
+        <th>Available Locker</th>
         <th>Action</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let locker of lockerData">
-        <td>{{ locker.lockerId }}</td>
-        <td>{{ locker.size }}</td>
+      <tr *ngFor="let locker of lockerData">        
         <td>{{ locker.branchName }}</td>
+        <td>{{ locker.address }}</td>
+        <td>{{ locker.size }}</td>
+        <td>{{ locker.available }}</td>
         <td>
-          <button class="btn btn-success btn-sm">Book Now</button>
+          <button class="btn btn-success btn-sm" (click)="openDialog(locker)">Reserve Now</button>
         </td>
       </tr>
       <tr *ngIf="lockerData.length === 0">
@@ -72,4 +74,7 @@
       </tr>
     </tbody>
   </table>
+  <div class="mt-3 small blinking-note text-danger">
+    <strong>Note:</strong> * Minimum reservation charge Rs 100 applies & non refundable.
+  </div>
 </div>

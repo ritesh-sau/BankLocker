@@ -6,6 +6,7 @@ import { ProductModule } from "./modules/master/product/product.module";
 import { UserComponent } from "./modules/master/user/user.component";
 import { BranchBookedComponent } from "./modules/master/product/branch-booked/branch-booked.component";
 import { AvailableBranchComponent } from "./modules/master/product/available-branch/available-branch.component";
+import { PaymentComponent } from "./modules/master/user/payment/payment.component";
 
 
 const routes: Routes = [
@@ -39,6 +40,10 @@ const routes: Routes = [
     {
         path: 'user-access',
         component: UserComponent,
+    },
+    {
+        path: 'payment',
+        component: PaymentComponent,
     },
     {
         path: 'master/product',

@@ -32,6 +32,7 @@ import { BranchBookedComponent } from './modules/master/product/branch-booked/br
 import { MatDialogModule } from '@angular/material/dialog';
 import { RemarksDialogComponent } from './modules/master/product/remarks-dialog/remarks-dialog.component';
 import { AvailableBranchComponent } from './modules/master/product/available-branch/available-branch.component';
+import { PaymentComponent } from './modules/master/user/payment/payment.component';
 
 
 
@@ -44,6 +45,7 @@ import { AvailableBranchComponent } from './modules/master/product/available-bra
     SideBarComponent,
     FooterComponent,
     UserComponent,
+    PaymentComponent
   ],
   imports: [
     CommonModule,
@@ -69,6 +71,7 @@ import { AvailableBranchComponent } from './modules/master/product/available-bra
     MatSelectModule,
     BranchBookedComponent,
     AvailableBranchComponent,
+   
     MatDialogModule
         
 

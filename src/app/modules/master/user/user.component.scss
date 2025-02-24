@@ -146,3 +146,16 @@ select:focus {
 .table tbody tr:hover {
     background: #f2f4f6;
 }
+
+
+.blinking-note {
+    color: red; /* Change text color */
+    font-size: 14px;
+    animation: blink 1s infinite;
+  }
+
+  @keyframes blink {
+    10% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+  }
