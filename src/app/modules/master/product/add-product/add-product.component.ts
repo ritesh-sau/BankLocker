@@ -13,19 +13,19 @@ export class AddProductComponent {
 
   // Donut chart data
   small = [
-    { name: 'Booked', value: 25 },
+    { name: 'Booked', value: 20 },
     { name: 'Available', value: 15 },
     { name: 'Reserved', value: 5 }
   ];
   medium = [
-    { name: "Booked", value: 15 },
+    { name: "Booked", value: 12 },
     { name: "Available", value: 15 },
     { name: 'Reserved', value: 3 }
   ];
 
   // Example data for Large Locker
   large = [
-    { name: "Booked", value: 20 },
+    { name: "Booked", value: 18 },
     { name: "Available", value: 10 },
     { name: 'Reserved', value: 2 }
   ];

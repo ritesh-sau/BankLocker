@@ -75,7 +75,7 @@ export class AuthComponent implements OnInit {
     //   );
     // }
 
-    if (username === "ritesh" && password === "1234") {
+    if ((username === "R26411" || username === "r26411") && password === "1234") {
       this.router.navigateByUrl('/master/product/addProduct').then(() => {
         //this.loading.loadingOn();
         window.location.reload()
