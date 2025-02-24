@@ -1,20 +1,20 @@
 import { Component, Inject } from '@angular/core';
-import { CommonModule } from '@angular/common'; // ✅ Required for *ngIf
+import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input'; // ✅ Required for <mat-input>
+import { MatInputModule } from '@angular/material/input';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-reserve-dialog',
   standalone: true,
   imports: [
-    CommonModule,      // ✅ Required for *ngIf
+    CommonModule, 
     MatDialogModule,
-    FormsModule,       // ✅ Required for [(ngModel)]
+    FormsModule,
     MatFormFieldModule,
-    MatInputModule     // ✅ Required for Material Input
+    MatInputModule
   ],
   templateUrl: './reserve-dialog.component.html',
   styleUrl: './reserve-dialog.component.scss'
@@ -41,7 +41,7 @@ export class ReserveDialogComponent {
     this.dialogRef.close();
   }
 
-  validCustIds: string[] = ['456789123', '567891234 ', '678912345'];
+  validCustIds: string[] = ['456789123', '567891234', '678912345'];
 
   checkCustId(event: Event) {
     const custId = (event.target as HTMLInputElement).value;
